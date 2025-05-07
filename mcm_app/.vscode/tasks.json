@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compilar MCM App",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "main.c",
+                "interfaces/gtk/interface.c",
+                "core/mcm/calculator.c",
+                "core/validation/number_validator.c",
+                "-o",
+                "mcm_app.exe",
+                "`pkg-config --cflags --libs gtk+-3.0`"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compila el proyecto MCM App usando MinGW y GTK."
+        }
+    ]
+  }
