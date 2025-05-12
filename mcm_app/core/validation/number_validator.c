@@ -1,9 +1,16 @@
 #include "number_validator.h"
+#include <ctype.h> // Para isdigit()
 
-int es_entero_valido(const char* texto) {
-    if (texto == NULL || *texto == '\0') return 0;
-    for (int i = 0; texto[i] != '\0'; ++i) {
-        if (texto[i] < '0' || texto[i] > '9') return 0;
+int es_numero_valido(char *str)
+{
+    // Recorremos cada carácter de la cadena
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        // Si el carácter es una letra (mayúscula o minúscula), devolvemos falso
+        if (!isdigit(str[i]))
+        {
+            return 0; // Indica que hay una letra en la cadena
+        }
     }
-    return 1;
+    return 1; // No hay letras, la cadena es válida
 }

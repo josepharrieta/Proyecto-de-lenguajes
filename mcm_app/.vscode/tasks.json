@@ -1,25 +1,22 @@
 {
     "version": "2.0.0",
     "tasks": [
-        {
-            "label": "Compilar MCM App",
-            "type": "shell",
-            "command": "gcc",
-            "args": [
-                "main.c",
-                "interfaces/gtk/interface.c",
-                "core/mcm/calculator.c",
-                "core/validation/number_validator.c",
-                "-o",
-                "mcm_app.exe",
-                "`pkg-config --cflags --libs gtk+-3.0`"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": ["$gcc"],
-            "detail": "Compila el proyecto MCM App usando MinGW y GTK."
-        }
+      {
+        "label": "Compilar y ejecutar interface.c",
+        "type": "shell",
+        "command": "cmd",
+        "args": [
+    "/c",
+    "gcc -Wall -Wextra -g3 -c ../core/validation/number_validator.c -o ../core/validation/number_validator.o",
+    "gcc -Wall -Wextra -g3 -c ../core/mcm/calculator.c -o ../core/mcm/calculator.o",
+    "gcc -Wall -Wextra -g3 -c interfaces/interface.c -o interfaces/output/interface.o",
+    "gcc -Wall -Wextra -g3 interfaces/output/interface.o ../core/validation/number_validator.o ../core/mcm/calculator.o -o interfaces/output/interface.exe -lgdi32",
+    "interfaces\\output\\interface.exe"
+]
+,
+        "group": "build",
+        "problemMatcher": ["$gcc"]
+      }
     ]
   }
+  
